@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace selection_sort
 {
@@ -10,18 +11,17 @@ namespace selection_sort
     {
         static void Main(string[] args)
         {
-            int[] nums = new int[10000];
+            int[] nums = new int[50];
             Random rand = new Random();
             for (int i = 0; i < nums.Length; i++)
             {
-                nums[i] = rand.Next(1, 101);
+                nums[i] = rand.Next(1, 51);
             }
 
             Console.WriteLine("******** Selection sort Algorithm********");
             Console.WriteLine("Orignal Datset:");
             Display(nums);
             InsertionSort(nums);
-            
             SelectionSort(nums);
             BubbleSort(nums);
             Display(nums);
@@ -51,7 +51,7 @@ namespace selection_sort
                 Console.Write(x + "\t");
 
             Console.WriteLine();
-           Console.ReadLine();
+            Console.ReadLine();
         }
         static void InsertionSort(int[] _nums)
         {
@@ -74,8 +74,10 @@ namespace selection_sort
         }
         static void BubbleSort( int[] _nums)
         {
-            
-           
+
+            Stopwatch s1 = new Stopwatch();
+            s1.Start();
+            s1.Stop();
             for ( int i = 0; i< _nums.Length -1; i++)
             {
                 for (int j = 0; j < _nums.Length - 1; j++)
@@ -89,6 +91,7 @@ namespace selection_sort
                 }
 
             }
+            Console.WriteLine("Standard Bubble Sort: " + s1.Elapsed);
         }
     }
 }
